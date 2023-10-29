@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //StartMainApp y UserChoiceMainApp
+    <color name="background_color">#FAF3E0</color>
+    <color name="button_color">#FF9E29</color>
+    <color name="text_color_white">#FFFFFF</color>
+
+    //LoginMainApp
+    <color name="background_color1">#EFF4ED</color>
+    <color name="title_color">#80857E</color>
+    <color name="focused_indicator_color">#FF9E29</color>
+    <color name="unfocused_indicator_color">#808080</color>
+    <color name="button_container_color">#FF9E29</color>
+
+    //RegisterMainApp
+    <color name="register_surface_color">#EFF4ED</color>
+    <color name="register_title_color">#80857E</color>
+    <color name="register_focused_indicator_color">#FF9E29</color>
+    <color name="register_unfocused_indicator_color">#808080</color>
+    <color name="register_button_color">#FF9E29</color>
+
+    //RecetasForYouMainApp
+    <color name="color_surface">#FAF3E0</color>
+    <color name="color_card">#EAD7BB</color>
+    <color name="color_button_selected">#6C5F5B</color>
+    <color name="color_button_unselected">#FF9E29</color>
+
+
+
+</resources>

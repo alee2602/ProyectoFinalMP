@@ -1,0 +1,43 @@
+<resources>
+    //Nombre de la app
+    <string name="app_name">MakeFood!</string>
+
+    //StartMainApp
+    <string name="start_cooking">Start Cooking</string>
+    <string name="button_font_size">18</string>
+
+    //UserChoiceMainApp
+    <string name="login_text">Login</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="enter_as_guest_text">Enter as Guest</string>
+
+    //LoginMainApp
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="invalid_credentials">Invalid username or password</string>
+    <string name="login_title_font_size">32</string>
+    <string name="error_message_font_size">16</string>
+
+    //RegisterMainApp
+    <string name="new_here">New Here?</string>
+    <string name="username_hint1">Username</string>
+    <string name="email_address_hint">Email Address</string>
+    <string name="password_hint1">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="successfully_registered">You\'ve been successfully registered!</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="invalid_username_or_password">Invalid username or password</string>
+
+    //RecetasForYouMainApp
+    <string name="category_chicken">Chicken</string>
+    <string name="category_meat">Meat</string>
+    <string name="category_pasta">Pasta</string>
+    <string name="category_snacks">Snacks</string>
+    <string name="category_vegan">Vegan</string>
+
+
+</resources>
+

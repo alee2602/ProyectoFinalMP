@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //StartMainApp
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="logo_size">350dp</dimen>
+    <dimen name="button_height">70dp</dimen>
+    <dimen name="padding_default">16dp</dimen>
+
+    //UserChoiceMainApp
+    <dimen name="spacing_large1">36dp</dimen>
+    <dimen name="image_width">350dp</dimen>
+    <dimen name="image_height">275dp</dimen>
+    <item name="button_width_fraction" format="float" type="dimen">0.7</item>
+    <dimen name="button_height1">70dp</dimen>
+
+    //LoginMainApp
+    <dimen name="login_card_padding">32dp</dimen>
+
+    //RegisterMainApp
+    <dimen name="register_card_padding">32dp</dimen>
+    <dimen name="spacer_height">16dp</dimen>
+    <dimen name="register_button_corner_radius">20dp</dimen>
+    <dimen name="back_arrow_padding">16dp</dimen>
+
+</resources>
