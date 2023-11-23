@@ -3,7 +3,6 @@ package com.example.proyectofinalmp.ui.detailrecetas.view
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,8 +17,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Snackbar
@@ -35,7 +39,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,8 +53,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.proyectofinalmp.R
 import com.example.proyectofinalmp.navigation.NavigationState
 import com.example.proyectofinalmp.navigation.model.BottomBarScreen
+import com.example.proyectofinalmp.ui.detailrecetas.viewmodel.RecipeDetailsViewModel
+import com.example.proyectofinalmp.ui.misrecetas.viewmodel.MyRecipesViewModel
 import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.AppViewModel
-import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.RecetasForYouViewModel
+import com.example.proyectofinalmp.ui.repository.InformacionNutricional
 
 class RecipeDetails: ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
@@ -72,11 +80,12 @@ fun RecipeDetailsMainApp(navController: NavController, recetaId: String?, fromSc
             }
         }
     }
-    val viewModel: RecetasForYouViewModel = viewModel() //Inicializar viewModel
+    val viewModel: RecipeDetailsViewModel = viewModel() //Inicializar viewModel
     val recetasPorId by viewModel.recetas.observeAsState(emptyList()) //Obtener y observar la lista de las recetas
     val recetaSeleccionada = recetasPorId.find { it.id == recetaId } //Seleccionar la receta a partir de su id
     var showSnackbar by remember { mutableStateOf(false) } //Muestra el snackbar cuando se haya guardado una receta
     var snackbarMessage by remember { mutableStateOf("") }
+    val context= LocalContext.current
 
     Surface(color = Color(4293979604)) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -97,8 +106,9 @@ fun RecipeDetailsMainApp(navController: NavController, recetaId: String?, fromSc
                                 .size(24.dp)
                                 .clickable {
                                     val backStackEntry = navController.currentBackStackEntry
-                                    val fromScreen = backStackEntry?.arguments?.getString("fromScreen")
-                                    when(fromScreen) {
+                                    val fromScreen =
+                                        backStackEntry?.arguments?.getString("fromScreen")
+                                    when (fromScreen) {
                                         "RecipesForYou" -> navController.navigate(NavigationState.MainScreen.route)
                                         "MyRecipes" -> navController.navigate(BottomBarScreen.MyRecipes.route)
                                         else -> navController.navigate(NavigationState.MainScreen.route) //Por defecto
@@ -114,9 +124,9 @@ fun RecipeDetailsMainApp(navController: NavController, recetaId: String?, fromSc
                         IconButton(
                             onClick = { val wasAdded = viewModel.toggleFavorite(recetaId!!)
                                       if (wasAdded) {
-                                          snackbarMessage= "Recipe was added to favorites!"
+                                          snackbarMessage= context.getString(R.string.wasAdded)
                                       } else{
-                                          snackbarMessage= "Recipe was deleted from favorites."
+                                          snackbarMessage= context.getString(R.string.wasnotAdded)
                                       }
                                 showSnackbar= true },
                             modifier = Modifier
@@ -169,12 +179,19 @@ fun RecipeDetailsMainApp(navController: NavController, recetaId: String?, fromSc
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                     }
-
+                    // Sección de Alergenos
+                    item {
+                        receta.alergenos?.let { DisplayAllergens(alergenos = it) }
+                    }
+                    // Sección de Información Nutricional
+                    item {
+                        NutritionalInfoSection(nutritionalInfo = receta.infoNutricional)
+                    }
                     // Sección de ingredientes
                     item {
                         // Título de los Ingredientes
                         Text(
-                            text = "Ingredients:",
+                            text = context.getString(R.string.ingredientstitle),
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
@@ -190,7 +207,7 @@ fun RecipeDetailsMainApp(navController: NavController, recetaId: String?, fromSc
                     }
                 } else {
                     item {
-                        Text("Receta no encontrada")
+                        Text(context.getString(R.string.recipe_not_found))
                     }
                 }
             }
@@ -198,7 +215,7 @@ fun RecipeDetailsMainApp(navController: NavController, recetaId: String?, fromSc
                 Snackbar(
                     modifier = Modifier.align(Alignment.BottomCenter),
                     action = {
-                        Text("Cerrar", modifier = Modifier.clickable {
+                        Text(context.getString(R.string.close_snackbar), modifier = Modifier.clickable {
                             showSnackbar = false
                         })
                     }
@@ -245,7 +262,8 @@ fun IngredientCard(ingredient: String, quantity: String) {
     }
 }
     @Composable
-    fun DisplayPreparationSteps(steps: List<String>) {
+    fun DisplayPreparationSteps(steps: List<String>) { //Despliega todas las recetas
+        val context= LocalContext.current
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -255,9 +273,8 @@ fun IngredientCard(ingredient: String, quantity: String) {
         ) {
             Column {
 
-                // Título "Instructions"
                 Text(
-                    text = "Instructions:",
+                    text = context.getString(R.string.recipe_prep),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
@@ -272,12 +289,116 @@ fun IngredientCard(ingredient: String, quantity: String) {
                         fontSize = 16.sp,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(8.dp)  // Espacio entre pasos
+                            .padding(8.dp)
                     )
                 }
             }
         }
     }
+
+@Composable
+fun NutritionalInfoSection(nutritionalInfo: InformacionNutricional) { //Muestra la sección de infrmación nutricional
+    val context= LocalContext.current
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
+        colors= CardDefaults.cardColors(containerColor = Color(4294180328)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = context.getString(R.string.nutritionalinfo),
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+
+            NutritionalInfoRow(
+                iconId = R.drawable.apple,
+                contentDescription = "Calorías",
+                infoText = "${context.getString(R.string.calories)} ${nutritionalInfo.calorias}"
+            )
+            NutritionalInfoRow(
+                iconId = R.drawable.chicken,
+                contentDescription = "Proteínas",
+                infoText = "${context.getString(R.string.proteins)} ${nutritionalInfo.proteinas}"
+            )
+            NutritionalInfoRow(
+                iconId = R.drawable.oil,
+                contentDescription = "Grasas",
+                infoText = "${context.getString(R.string.fats)} ${nutritionalInfo.grasas}"
+            )
+            NutritionalInfoRow(
+                iconId = R.drawable.bread,
+                contentDescription = "Carbohidratos",
+                infoText = "${context.getString(R.string.carbs)} ${nutritionalInfo.carbohidratos}"
+            )
+        }
+    }
+}
+
+@Composable
+fun NutritionalInfoRow(iconId: Int, contentDescription: String, infoText: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = infoText,
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            color = Color.Black
+        )
+        Icon(
+            painter = painterResource(id = iconId),
+            contentDescription = contentDescription,
+            modifier = Modifier.size(24.dp),
+            tint = Color.Black
+        )
+    }
+}
+
+@Composable
+fun DisplayAllergens(alergenos: List<String>) { //Muestra los alérgenos
+    val context= LocalContext.current
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        Text(text = context.getString(R.string.allergens), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        if (alergenos.isEmpty()) {
+            Text(text = context.getString(R.string.noallergens), fontStyle = FontStyle.Italic)
+        } else {
+            alergenos.forEach { alergeno ->
+                ChipView(text = alergeno)
+            }
+        }
+    }
+}
+
+@Composable
+fun ChipView(text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .padding(4.dp)
+            .background(Color.Red.copy(alpha = 0.2f), RoundedCornerShape(16.dp))
+            .padding(horizontal = 8.dp, vertical = 4.dp)
+    ) {
+        Icon(Icons.Default.Warning, contentDescription = null, tint = Color.Red)
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(text = text, color = Color.Red)
+    }
+}
 @Preview
 @Composable
 fun DetailPreview() {

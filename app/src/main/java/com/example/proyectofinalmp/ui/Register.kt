@@ -1,5 +1,6 @@
 package com.example.proyectofinalmp.ui
 
+import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,6 +36,7 @@ import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -47,6 +49,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.proyectofinalmp.R
 import com.example.proyectofinalmp.navigation.NavigationState
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 
@@ -61,17 +64,19 @@ fun RegisterMainApp(navController: NavController) {
     var showMessage by remember { mutableStateOf(false) }
     var registrationSuccess by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     // String Resources
-    val newHereString = stringResource(R.string.new_here)
-    val usernameHint = stringResource(R.string.username_hint1)
-    val emailAddressHint = stringResource(R.string.email_address_hint)
-    val passwordHint = stringResource(R.string.password_hint1)
-    val confirmPasswordHint = stringResource(R.string.confirm_password_hint)
-    val registerString = stringResource(R.string.register)
-    val successfullyRegisteredString = stringResource(R.string.successfully_registered)
-    val passwordsDoNotMatchString = stringResource(R.string.passwords_do_not_match)
-    val invalidUsernameOrPasswordString = stringResource(R.string.invalid_username_or_password)
+    val newHereString = context.getString(R.string.new_here)
+    val usernameHint = context.getString(R.string.username_hint1)
+    val emailAddressHint = context.getString(R.string.email_address_hint)
+    val passwordHint = context.getString(R.string.password_hint1)
+    val confirmPasswordHint = context.getString(R.string.confirm_password_hint)
+    val registerString = context.getString(R.string.register)
+    val successfullyRegisteredString = context.getString(R.string.successfully_registered)
+    val passwordsDoNotMatchString = context.getString(R.string.passwords_do_not_match)
+    val invalidUsernameOrPasswordString = context.getString(R.string.invalid_username_or_password)
+    val invalidEmailString= context.getString(R.string.invalid_email)
 
     // Dimen Resources
     val registerCardPadding = dimensionResource(R.dimen.register_card_padding)
@@ -199,16 +204,26 @@ fun RegisterMainApp(navController: NavController) {
 
                     Button(
                         onClick = {
-                            if (username.isValidUsername() && password.isValidPassword() && doPasswordsMatch(password, confirmPassword)) {
+                            if (username.isValidUsername() && password.isValidPassword() && email.isValidEmail() && doPasswordsMatch(password, confirmPassword)) {
                                 errorMessage = ""
-                                showMessage = true // Mostrar el Snackbar
-                                registrationSuccess = true  // Establece el registro como exitoso
+                                //Llamar a Firebase para crear un usuario
+                                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener{task ->
+                                        if (task.isSuccessful){
+                                            registrationSuccess = true  // Establece el registro como exitoso
+                                            showMessage = true // Mostrar el Snackbar
+                                        } else{
+                                            errorMessage = task.exception?.message ?: invalidUsernameOrPasswordString
+                                        }
+                                    }
 
                             } else {
-                                if (!doPasswordsMatch(password, confirmPassword)) {
-                                    errorMessage = passwordsDoNotMatchString
-                                } else {
-                                    errorMessage = invalidUsernameOrPasswordString
+                                errorMessage = when {
+                                    !username.isValidUsername() -> context.getString(R.string.invalid_username_format)
+                                    !email.isValidEmail() -> invalidEmailString
+                                    !password.isValidPassword() -> context.getString(R.string.weak_password)
+                                    !doPasswordsMatch(password, confirmPassword) -> passwordsDoNotMatchString
+                                    else -> invalidUsernameOrPasswordString
                                 }
                             }
                         },
@@ -247,5 +262,8 @@ fun RegisterMainApp(navController: NavController) {
 
 fun doPasswordsMatch(password: String, confirmPassword: String): Boolean {
     return password == confirmPassword
+}
+fun String.isValidEmail(): Boolean {
+    return Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }
 

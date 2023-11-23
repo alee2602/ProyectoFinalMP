@@ -13,12 +13,13 @@
 
     //LoginMainApp
     <string name="welcome_back">Welcome Back!</string>
-    <string name="username_hint">Username</string>
+    <string name="username_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_button">Login</string>
-    <string name="invalid_credentials">Invalid username or password</string>
+    <string name="invalid_credentials">Invalid email or password</string>
     <string name="login_title_font_size">32</string>
     <string name="error_message_font_size">16</string>
+    <string name="failedauth">Authentication failed</string>
 
     //RegisterMainApp
     <string name="new_here">New Here?</string>
@@ -30,6 +31,9 @@
     <string name="successfully_registered">You\'ve been successfully registered!</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="invalid_username_or_password">Invalid username or password</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="invalid_username_format">Invalid username format</string>
+    <string name="weak_password">Password is too weak</string>
 
     //RecetasForYouMainApp
     <string name="category_chicken">Chicken</string>
@@ -37,7 +41,161 @@
     <string name="category_pasta">Pasta</string>
     <string name="category_snacks">Snacks</string>
     <string name="category_vegan">Vegan</string>
+    <string name="seleccione">Select your allergens to filter recipes:</string>.
 
+    //RecipeDetailsMainApp
+    <string name="wasAdded">Recipe was added to favorites!</string>
+    <string name="wasnotAdded">Recipe was deleted from favorites.</string>
+    <string name="ingredientstitle">Ingredients: </string>
+    <string name="recipe_not_found">Recipe not found</string>
+    <string name="close_snackbar">Close</string>
+    <string name="recipe_prep">Preparation</string>
+    <string name="nutritionalinfo">Nutritional info: </string>
+    <string name="calories">Calories:</string>
+    <string name="proteins">Proteins: </string>
+    <string name="fats">Fats:</string>
+    <string name="carbs">Carbohydrates:</string>
+    <string name="allergens">Allergens</string>
+    <string name="noallergens">No allergens for this meal</string>
+
+    //RecetasRepository
+
+    //Allergens
+    <string name="allergensesame">sesame</string>
+    <string name="allergensoy">soy</string>
+    <string name="allergendairy">dairy</string>
+    <string name="allergengluten">gluten</string>
+    <string name="allergensulfites">sulfites</string>
+    <string name="allergennuts">nuts</string>
+    <string name="allergendf">dried fruit</string>
+    <string name="allergenegg">egg</string>
+
+    //Receta 1
+    <string name="recipe_1_title">Grilled Chicken Salad</string>
+    <string name="recipe_1_description">A light and healthy salad with grilled chicken breast.</string>
+
+    <string name="recipe_1_ingredient_1">Chicken breast</string>
+    <string name="recipe_1_ingredientpar_1">2 pieces</string>
+
+    <string name="recipe_1_ingredient_2">Lettuce</string>
+    <string name="recipe_1_ingredientpar_2">1 cup</string>
+
+    <string name="recipe_1_ingredient_3">Cherry tomatoes</string>
+    <string name="recipe_1_ingredientpar_3">10 pieces</string>
+
+    <string name="recipe_1_ingredient_4">Cucumber</string>
+    <string name="recipe_1_ingredientpar_4">1/2 piece</string>
+
+    <string name="recipe_1_ingredient_5">Olive oil</string>
+    <string name="recipe_1_ingredientpar_5">2 tablespoons</string>
+
+    <string name="recipe_1_step_1">Grill the chicken breast until fully cooked.</string>
+    <string name="recipe_1_step_2">Chop the lettuce, tomatoes, and cucumber.</string>
+    <string name="recipe_1_step_3">Mix all ingredients in a bowl.</string>
+    <string name="recipe_1_step_4">Drizzle with olive oil and serve.</string>
+
+    //Receta 2
+    <string name="recipe_2_title">Chicken Stir-Fry</string>
+    <string name="recipe_2_description">A quick and easy stir-fry with chicken and vegetables.</string>
+
+    //Receta 3
+    <string name="recipe_3_title">Chicken Curry</string>
+    <string name="recipe_3_description">A flavorful and fragrant curry dish with chicken and vegetables.</string>
+
+    //Receta 4
+    <string name="recipe_4_title">Chicken and Vegetable Soup</string>
+    <string name="recipe_4_description">A hearty and healthy soup with chicken and vegetables.</string>
+
+    //Receta 5
+    <string name="recipe_5_title">Chicken Picatta</string>
+    <string name="recipe_5_description">A classic Italian dish with chicken, lemon, and capers.</string>
+
+    //Receta 6
+    <string name="recipe_6_title">Beaf Steak</string>
+    <string name="recipe_6_description">A simple and delicious steak that is perfect for a quick and easy meal.</string>
+
+    //Receta 7
+    <string name="recipe_7_title">Pork Chops with Apples and Onions</string>
+    <string name="recipe_7_description">A classic dish that is perfect for a fall meal.</string>
+
+    //Receta 8
+    <string name="recipe_8_title">Ground Beef Tacos</string>
+    <string name="recipe_8_description">A classic Mexican dish that is easy to make and perfect for a crowd.</string>
+
+    //Receta 9
+    <string name="recipe_9_title">Beef Stroganoff</string>
+    <string name="recipe_9_description">A hearty and flavorful dish that is perfect for a cold winter day.</string>
+
+    //Receta 10
+    <string name="recipe_10_title">Beef Bourguignon</string>
+    <string name="recipe_10_description">A classic French dish that is slow-cooked to perfection. The beef is tender and the sauce is rich and flavorful.</string>
+
+    //Receta 11
+    <string name="recipe_11_title">Yogurt Parfaits</string>
+    <string name="recipe_11_description">A delicious and nutritious snack that is perfect for any time of day.</string>
+
+    <string name="recipe_11_ingredient_1">Yogurt</string>
+    <string name="recipe_11_ingredientpar_1">1 cup</string>
+
+    <string name="recipe_11_ingredient_2">Granola</string>
+    <string name="recipe_11_ingredientpar_2">1/2 cup</string>
+
+    <string name="recipe_11_ingredient_3">Fruit, chopped</string>
+    <string name="recipe_11_ingredientpar_3">1/2 cup</string>
+
+    <string name="recipe_11_step_1">In a glass or bowl, layer the yogurt, granola, and fruit.</string>
+    <string name="recipe_11_step_2">Repeat layers until the glass or bowl is full.</string>
+    <string name="recipe_11_step_3">Enjoy!</string>
+
+    //Receta 12
+    <string name="recipe_12_title">Trail Mix</string>
+    <string name="recipe_12_description">A filling and satisfying snack that is perfect for a hike or picnic.</string>
+
+    <string name="recipe_12_ingredient_1">Nuts</string>
+    <string name="recipe_12_ingredientpar_1">1 cup</string>
+
+    <string name="recipe_12_ingredient_2">Dried fruit</string>
+    <string name="recipe_12_ingredientpar_2">1 cup</string>
+
+    <string name="recipe_12_ingredient_3">Seeds</string>
+    <string name="recipe_12_ingredientpar_3">1/2 cup</string>
+
+    <string name="recipe_12_ingredient_4">Chocolate chips</string>
+    <string name="recipe_12_ingredientpar_4">1/4 cup</string>
+
+    <string name="recipe_12_step_1">In a bowl, combine the nuts, dried fruit, seeds, and chocolate chips.</string>
+    <string name="recipe_12_step_2">Mix well and enjoy!</string>
+
+    //Receta 13
+    <string name="recipe_13_title">Apple Strudel Bites</string>
+    <string name="recipe_13_description">A delicious and portable snack that is perfect for on the go.</string>
+
+    //Receta 14
+    <string name="recipe_14_title">Cheese Stuffed Pretzel Bites</string>
+    <string name="recipe_14_description">Savory pretzel bites filled with creamy cheese, perfect for dipping.</string>
+
+    //Receta 15
+    <string name="recipe_15_title">Caprese Salad</string>
+    <string name="recipe_15_description">A fresh and delicious salad that is perfect for summer.</string>
+
+    //Receta 16
+    <string name="recipe_16_title">Quinoa and Black Bean Salad</string>
+    <string name="recipe_16_description">A hearty and protein-packed salad, perfect for a nutritious lunch.</string>
+
+    //Receta 17
+    <string name="recipe_17_title">Spicy Chickpea Wraps</string>
+    <string name="recipe_17_description">Flavorful chickpea wraps with a spicy kick, perfect for a quick meal.</string>
+
+    //Receta 18
+    <string name="recipe_18_title">Fetuccini Alfredo</string>
+    <string name="recipe_18_description">A creamy and delicious pasta that is perfect for any occasion.</string>
+
+    //Receta 19
+    <string name="recipe_19_title">Spaghetti Carbonara</string>
+    <string name="recipe_19_description">A classic Roman dish made with eggs, cheese, pancetta, and pepper.</string>
+
+    //Receta 20
+    <string name="recipe_20_title">Linguine with Pesto and Sun-dried Tomatoes</string>
+    <string name="recipe_20_description">A vibrant and aromatic pasta dish featuring fresh basil pesto and sun-dried tomatoes.</string>
 
 </resources>
-

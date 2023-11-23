@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "455808666200",
+    "project_id": "makefood-fd748",
+    "storage_bucket": "makefood-fd748.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455808666200:android:51c1fd5a0e75671d3a982d",
+        "android_client_info": {
+          "package_name": "com.example.proyectofinalmp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmM5XLId3PolI5B7p3wSpJtnZvYw5rGd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

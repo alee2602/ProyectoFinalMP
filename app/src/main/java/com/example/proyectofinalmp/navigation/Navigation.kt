@@ -49,6 +49,7 @@ import com.example.proyectofinalmp.ui.misrecetas.view.MyRecipesMainApp
 import com.example.proyectofinalmp.ui.principalrecetas.view.RecetasForYouMainApp
 import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.AppViewModel
 import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.UserPreferences
+import androidx.compose.runtime.livedata.observeAsState
 
 
 @OptIn(ExperimentalMaterial3Api::class)
