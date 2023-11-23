@@ -1,5 +1,4 @@
 package com.example.proyectofinalmp.ui.principalrecetas.viewmodel
-
 import android.content.Context
 
 class UserPreferences(context: Context) {

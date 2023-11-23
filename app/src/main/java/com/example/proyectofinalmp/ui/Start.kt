@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -39,9 +40,10 @@ val CalistogaFamily= FontFamily(Font(R.font.calistogaregular))
 
 @Composable
 fun StartMainApp(navController: NavController) {
+    val context = LocalContext.current
 
     //String Resources
-    val startCookingText = stringResource(R.string.start_cooking)
+    val startCookingText = context.getString(R.string.start_cooking)
 
     //Dimesion Resources
     val spacingLarge = dimensionResource(R.dimen.spacing_large)

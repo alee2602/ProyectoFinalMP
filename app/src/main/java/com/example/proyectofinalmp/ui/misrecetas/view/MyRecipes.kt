@@ -20,29 +20,31 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.Receta
-import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.RecetasForYouViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
-import androidx.navigation.NavController
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectofinalmp.R
 import com.example.proyectofinalmp.navigation.NavigationState
+import com.example.proyectofinalmp.ui.misrecetas.viewmodel.MyRecipesViewModel
+import com.example.proyectofinalmp.ui.repository.Receta
 
 
 @Composable
 fun MyRecipesMainApp(navController: NavController) {
-    val viewModel: RecetasForYouViewModel= viewModel()
+    val viewModel: MyRecipesViewModel= viewModel()
     val favoriteRecipesIds by viewModel.favoriteRecipes.observeAsState(emptyList())
     val allRecipes = viewModel.recetas.value ?: emptyList()
 
@@ -98,36 +100,46 @@ fun MyRecipesMainApp(navController: NavController) {
 }
 @Composable
 fun RecipeCard(recipe: Receta, navController: NavController) {
-    val recetaId= recipe.id
-
-    Card(modifier = Modifier
-        .padding(8.dp)
-        .clickable {
-            navController.navigate("recipeDetail/$recetaId/MyRecipes") //Navega hacia los detalles de las recetas desde MyRecipesMainApp
-        }
-        .fillMaxWidth(),
-        colors= CardDefaults.cardColors(containerColor = Color(4293580731)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),) {
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            .clickable {
+                navController.navigate("recipeDetail/${recipe.id}/MyRecipes")
+            }
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(15.dp),
+        colors= CardDefaults.cardColors(containerColor = Color(0xFFF0EAE2)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
         Column {
-            // Mostrar la imagen de la receta
             Image(
                 painter = painterResource(id = recipe.imagen),
                 contentDescription = "Imagen de ${recipe.titulo}",
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(200.dp)
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(10.dp))
             )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Título de la receta
-            Text(text = recipe.titulo, fontWeight= FontWeight.Bold, color= Color.DarkGray, modifier = Modifier.padding(8.dp))
-
-            Spacer(modifier = Modifier.height(4.dp))
-
-            // Descripción de la receta
-            Text(text = recipe.descripcion, fontWeight= FontWeight.Bold, modifier = Modifier.padding(8.dp))
+            Text(
+                text = recipe.titulo,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                color = Color.Black,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(8.dp)
+            )
+            Text(
+                text = recipe.descripcion,
+                fontSize = 16.sp,
+                textAlign = TextAlign.Center,
+                color = Color.Gray,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
         }
     }
 }

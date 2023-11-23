@@ -40,9 +40,9 @@ fun UserChoiceMainApp(navController: NavController) {
     val context = LocalContext.current
 
     // String Resources
-    val loginText = stringResource(R.string.login_text)
-    val signUpText = stringResource(R.string.sign_up_text)
-    val guestText = stringResource(R.string.enter_as_guest_text)
+    val loginText = context.getString(R.string.login_text)
+    val signUpText = context.getString(R.string.sign_up_text)
+    val guestText = context.getString(R.string.enter_as_guest_text)
 
     //Dimension Resources
     val spacingLarge = dimensionResource(R.dimen.spacing_large1)

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    //Nombre de la app
+    <string name="app_name">MakeFood!</string>
+
+    //StartMainApp
+    <string name="start_cooking">Empezar</string>
+    <string name="button_font_size">18</string>
+
+    //UserChoiceMainApp
+    <string name="login_text">Iniciar Sesión</string>
+    <string name="sign_up_text">Registrar</string>
+    <string name="enter_as_guest_text">Ingresar como invitado</string>
+
+    //LoginMainApp
+    <string name="welcome_back">¡Bienvenido de nuevo!</string>
+    <string name="username_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="invalid_credentials">Correo o contaseña inválida</string>
+    <string name="login_title_font_size">32</string>
+    <string name="error_message_font_size">16</string>
+    <string name="failedauth">Autenticación fallida</string>
+
+    //RegisterMainApp
+    <string name="new_here">¿Eres nuevo?</string>
+    <string name="username_hint1">Usuario</string>
+    <string name="email_address_hint">Correo electrónico</string>
+    <string name="password_hint1">Contraseña</string>
+    <string name="confirm_password_hint">Confirmar contraseña</string>
+    <string name="register">Registrar</string>
+    <string name="successfully_registered">Se ha registrado correctamente.</string>
+    <string name="passwords_do_not_match">Las contraseñas no coinciden</string>
+    <string name="invalid_username_or_password">Nombre de usuario o contraseña no válidos</string>
+    <string name="invalid_email">Formato de correo electrónico no válido</string>
+    <string name="invalid_username_format">Formato de nombre de usuario no válido</string>
+    <string name="weak_password">La contraseña es demasiado débil</string>
+
+    //RecetasForYouMainApp
+    <string name="category_chicken">Pollo</string>
+    <string name="category_meat">Carne</string>
+    <string name="category_pasta">Pasta</string>
+    <string name="category_snacks">Aperitivos</string>
+    <string name="category_vegan">Vegano</string>
+    <string name="seleccione">Selecciona tus alérgenos para filtrar las recetas:</string>
+
+    //RecipeDetails
+    <string name="wasAdded">¡Receta añadida a favoritos!</string>
+    <string name="wasnotAdded">Receta eliminada de favoritos.</string>
+    <string name="ingredientstitle">Ingredientes: </string>
+    <string name="recipe_not_found">Receta no encontrada</string>
+    <string name="close_snackbar">Cerrar</string>
+    <string name="recipe_prep">Preparación</string>
+    <string name="nutritionalinfo">Información Nutricional: </string>
+    <string name="calories">Calorías:</string>
+    <string name="proteins">Proteinas: </string>
+    <string name="fats">Grasas:</string>
+    <string name="carbs">Carbohidratos:</string>
+    <string name="allergens">Alérgenos</string>
+    <string name="noallergens">No hay alérgenos para esta comida</string>
+
+    //RecetasRepository
+
+    //Allergens
+    <string name="allergensesame">sésamo</string>
+    <string name="allergensoy">soya</string>
+    <string name="allergendairy">lácteos</string>
+    <string name="allergengluten">gluten</string>
+    <string name="allergensulfites">sulfitos</string>
+    <string name="allergennuts">nueces</string>
+    <string name="allergendf">frutos secos</string>
+    <string name="allergenegg">huevo</string>
+
+    //Receta 1
+    <string name="recipe_1_title">Ensalada de Pollo a la Parrilla</string>
+    <string name="recipe_1_description">Una ensalada ligera y saludable con pechuga de pollo a la parrilla.</string>
+
+    <string name="recipe_1_ingredient_1">Pechuga de pollo</string>
+    <string name="recipe_1_ingredientpar_1">2 piezas</string>
+
+    <string name="recipe_1_ingredient_2">Lechuga</string>
+    <string name="recipe_1_ingredientpar_2">1 taza</string>
+
+    <string name="recipe_1_ingredient_3">Tomates cherry</string>
+    <string name="recipe_1_ingredientpar_3">10 piezas</string>
+
+    <string name="recipe_1_ingredient_4">Pepino</string>
+    <string name="recipe_1_ingredientpar_4">1/2 pieza</string>
+
+    <string name="recipe_1_ingredient_5">Aceite de oliva, 2 cucharadas</string>
+    <string name="recipe_1_ingredientpar_5">2 cucharadas</string>
+
+    <string name="recipe_1_step_1">Asa la pechuga de pollo hasta que esté bien cocida.</string>
+    <string name="recipe_1_step_2">Corta la lechuga, los tomates y el pepino.</string>
+    <string name="recipe_1_step_3">Mezcla todos los ingredientes en un bowl.</string>
+    <string name="recipe_1_step_4">Adereza con aceite de oliva y sirve.</string>
+
+    //Receta 2
+    <string name="recipe_2_title">Salteado de Pollo</string>
+    <string name="recipe_2_description">Un salteado rápido y fácil con pollo y verduras.</string>
+
+    //Receta 3
+    <string name="recipe_3_title">Pollo al curry</string>
+    <string name="recipe_3_description">Un sabroso y aromático plato de curry con pollo y verduras.</string>
+
+    //Receta 4
+    <string name="recipe_4_title">Sopa de pollo y verduras</string>
+    <string name="recipe_4_description">Una sopa sustanciosa y sana con pollo y verduras.</string>
+
+    //Receta 5
+    <string name="recipe_5_title">Pollo a la Picatta</string>
+    <string name="recipe_5_description">Un clásico plato italiano con pollo, limón y alcaparras.</string>
+
+    //Receta 6
+    <string name="recipe_6_title">Bistec</string>
+    <string name="recipe_6_description">Un filete sencillo y delicioso perfecto para una comida rápida y fácil.</string>
+
+    //Receta 7
+    <string name="recipe_7_title">Chuletas de cerdo con manzanas y cebollas</string>
+    <string name="recipe_7_description">Un plato clásico perfecto para una comida otoñal.</string>
+
+    //Receta 8
+    <string name="recipe_8_title">Tacos de carne molida</string>
+    <string name="recipe_8_description">Un plato clásico mexicano fácil de hacer y perfecto para una multitud.</string>
+
+    //Receta 9
+    <string name="recipe_9_title">Carne de ternera Stroganoff</string>
+    <string name="recipe_9_description">Un plato contundente y sabroso perfecto para un frío día de invierno.</string>
+
+    //Receta 10
+    <string name="recipe_10_title">Carne Bourguignon</string>
+    <string name="recipe_10_description">Un plato clásico francés que se cocina a fuego lento hasta alcanzar la perfección. La ternera está tierna y la salsa es rica y sabrosa.</string>
+
+    //Receta 11
+    <string name="recipe_11_title">Parfaits de yogur</string>
+    <string name="recipe_11_description">Un delicioso y nutritivo tentempié perfecto para cualquier momento del día.</string>
+
+    <string name="recipe_11_ingredient_1">Yogur</string>
+    <string name="recipe_11_ingredientpar_1">1 taza</string>
+
+    <string name="recipe_11_ingredient_2">Granola</string>
+    <string name="recipe_11_ingredientpar_2">1/2 taza</string>
+
+    <string name="recipe_11_ingredient_3">Fruta picada</string>
+    <string name="recipe_11_ingredientpar_3">1/2 taza</string>
+
+    <string name="recipe_11_step_1">En un vaso o bol, pon en capas el yogur, la granola y la fruta.</string>
+    <string name="recipe_11_step_2">Repite las capas hasta llenar el vaso o bol.</string>
+    <string name="recipe_11_step_3">¡Disfruta!</string>
+
+    //Receta 12
+    <string name="recipe_12_title">Trail Mix</string>
+    <string name="recipe_12_description">Un tentempié que llena y satisface, perfecto para una excursión o un picnic.</string>
+
+    <string name="recipe_12_ingredient_1">Nueces</string>
+    <string name="recipe_12_ingredientpar_1">1 taza</string>
+
+    <string name="recipe_12_ingredient_2">Frutos secos</string>
+    <string name="recipe_12_ingredientpar_2">1 taza</string>
+
+    <string name="recipe_12_ingredient_3">Semillas</string>
+    <string name="recipe_12_ingredientpar_3">1/2 taza</string>
+
+    <string name="recipe_12_ingredient_4">Chispas de chocolate</string>
+    <string name="recipe_12_ingredientpar_4">1/4 taza</string>
+
+    <string name="recipe_12_step_1">En un bol, mezcla los frutos secos, las semillas y las pepitas de chocolate.</string>
+    <string name="recipe_12_step_2">¡Mezcla bien y disfruta!</string>
+
+    //Receta 13
+    <string name="recipe_13_title">Bocaditos de strudel de manzana</string>
+    <string name="recipe_13_description">Un tentempié delicioso y portátil perfecto para llevar.</string>
+
+    //Receta 14
+    <string name="recipe_14_title">Bocaditos de pretzel rellenos de queso</string>
+    <string name="recipe_14_description">Sabrosos bocaditos de pretzel rellenos de queso cremoso, perfectos para mojar.</string>
+
+    //Receta 15
+    <string name="recipe_15_title">Ensalada Caprese</string>
+    <string name="recipe_15_description">Una ensalada fresca y deliciosa perfecta para el verano.</string>
+
+    //Receta 16
+    <string name="recipe_16_title">Ensalada de quinoa y frijoles negros</string>
+    <string name="recipe_16_description">Una ensalada sustanciosa y llena de proteínas, perfecta para un almuerzo nutritivo.</string>
+
+    //Receta 17
+    <string name="recipe_17_title">Enrollados de garbanzos picantes</string>
+    <string name="recipe_17_description">Sabrosos wraps de garbanzos con un toque picante, perfectos para una comida rápida.</string>
+
+    //Receta 18
+    <string name="recipe_18_title">Fetuccini Alfredo</string>
+    <string name="recipe_18_description">Una pasta cremosa y deliciosa perfecta para cualquier ocasión.</string>
+
+    //Receta 19
+    <string name="recipe_19_title">Spaghetti Carbonara</string>
+    <string name="recipe_19_description">Un clásico plato romano hecho con huevos, queso, panceta y pimienta.</string>
+
+    //Receta 20
+    <string name="recipe_20_title">Linguine con pesto y tomates secos</string>
+    <string name="recipe_20_description">Un vibrante y aromático plato de pasta con pesto fresco de albahaca y tomates secos.</string>
+
+</resources>

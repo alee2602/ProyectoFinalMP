@@ -1,5 +1,6 @@
 package com.example.proyectofinalmp.ui
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -46,23 +46,28 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.proyectofinalmp.R
 import com.example.proyectofinalmp.navigation.NavigationState
+import com.example.proyectofinalmp.ui.principalrecetas.viewmodel.UserPreferences
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginMainApp(navController: NavController) {
-    var username by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
+    val auth = FirebaseAuth.getInstance()
+    val userPreferences = UserPreferences(LocalContext.current)
+    val context = LocalContext.current
 
     //String Resources
-    val welcomeBack = stringResource(R.string.welcome_back)
-    val usernameHint = stringResource(R.string.username_hint)
-    val passwordHint = stringResource(R.string.password_hint)
-    val loginButton = stringResource(R.string.login_button)
-    val invalidCredentials = stringResource(R.string.invalid_credentials)
-    val loginFontSizeValue = stringResource(R.string.login_title_font_size).toInt()
+    val welcomeBack = context.getString(R.string.welcome_back)
+    val emailHint = context.getString(R.string.username_hint)
+    val passwordHint = context.getString(R.string.password_hint)
+    val loginButton = context.getString(R.string.login_button)
+    val invalidCredentials = context.getString(R.string.invalid_credentials)
+    val loginFontSizeValue = context.getString(R.string.login_title_font_size).toInt()
     val loginFontSize = loginFontSizeValue.sp
-    val errorMessageFontSizeValue= stringResource(R.string.error_message_font_size).toInt()
+    val errorMessageFontSizeValue= context.getString(R.string.error_message_font_size).toInt()
     val errorMessageFontSize= errorMessageFontSizeValue.sp
 
     //Dimension Resources
@@ -123,9 +128,9 @@ fun LoginMainApp(navController: NavController) {
 
                     //TextFields
                     TextField(
-                        value = username,
-                        onValueChange = { username = it },
-                        label = { Text(usernameHint, fontFamily = RobotoFontFamily) },
+                        value = email,
+                        onValueChange = { email = it },
+                        label = { Text(emailHint, fontFamily = RobotoFontFamily) },
                         textStyle = TextStyle(color = Color.Black, fontFamily = RobotoFontFamily),
                         colors = TextFieldDefaults.textFieldColors(
                             focusedIndicatorColor = focusedIndicatorColor,
@@ -163,13 +168,18 @@ fun LoginMainApp(navController: NavController) {
 
                     Button(
                         onClick = {
-                            if (username.isValidUsername() && password.isValidPassword()) {
-                                errorMessage = ""
-                                navController.navigate(NavigationState.MainScreen.route)
-                            } else {
-                                errorMessage = invalidCredentials
-                            }
-                        },
+                            auth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener{task ->
+                                    if (task.isSuccessful){
+                                        Log.d("Login", "signInWithEmail:success")
+                                        userPreferences.setGuest(false)
+                                        navController.navigate(NavigationState.MainScreen.route)
+                                    } else{
+                                        Log.w("Login", "signInWithEmail:failure", task.exception)
+                                        errorMessage = context.getString(R.string.failedauth)
+                                    }
+                                }
+                            },
                         shape = RoundedCornerShape(20.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = buttonContainerColor)
                     ) {
